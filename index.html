@@ -9,7 +9,8 @@
     <script src="https://kit.fontawesome.com/154f1b3bac.js" crossorigin="anonymous"></script>
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
 </head>
 
 <body>
@@ -133,28 +134,9 @@
             <ul class="body_chat">
                 <li v-for="chat in contacts[activeChatIndex].messages" :class="chat.status=== 'sent' ? 'sent' :  'received'"   class="message ">
                    {{ chat.message}}
-                    <span class="time"> 15:30 </span>
+                    <span class="time"> {{ time( chat.date ) }}</span>
                 </li>
-<!-- 
-                <li class="message received">
-                    Arriva subito, è in ascensore.
-                    <span class="time"> 15:41 </span>
-                </li>
-
-                <li class="message sent">
-                    Perfetto grazie!
-                    <span class="time"> 15:41 </span>
-                </li>
-
-                <li class="message received">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Asperiores mollitia at rem harum quod. Nesciunt, est fuga. Dolorum
-                    repellendus cupiditate nulla accusamus! Beatae, explicabo deleniti
-                    eaque nobis ex natus, ab a quam, quo sint totam nostrum facilis
-                    quidem obcaecati cumque! Perspiciatis quod totam quae quam vel
-                    ullam quasi delectus perferendis.
-                    <span class="time"> 15:41 </span>
-                </li> -->
+ 
             </ul>
             <div class="toolbar">
                 <div class="icon-toolbar">
@@ -173,8 +155,7 @@
 
 </div>
 
-
-
+ 
  
 
 
