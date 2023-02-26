@@ -1,139 +1,301 @@
- 
-.container {
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+}
+
+ul,
+li,
+menu {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: currentColor;
+}
+
+input,
+button {
+	border: none;
+}
+
+
+.container{
     display: flex;
-    flex-direction: column;
     height: 100vh;
-    font-family: sans-serif;
-  }
-  
- 
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: green;
-    color: #FFF;
-  }
-  
-  .header img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .header h1 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-   .chat-container {
-    display: flex;
-    flex-grow: 1;
-    background-color: #ECE5DD;
+}
+
+
+.img_user{
+    max-width: 30%;
+}
+
+.user_immg {
+
+    aspect-ratio: 1/1;
+    border-radius: 999px;
     overflow: hidden;
-  }
-  
-   .sez_contacts {
-    display: flex;
-    flex-direction: column;
+    height: 64px;
     flex-shrink: 0;
-    width: 250px;
-    background-color: #FFF;
-    padding: 20px;
-    box-shadow: 2px 0 2px rgba(0,0,0,0.1);
-  }
+}
+
+
+
+/* *****************
+*****SIDEBARRRR*****
+****************** */
+
+.sidebar{
+    width: 40vh;
+    /* background-color: yellow; */
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.header_sidebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
   
-  .sez_contacts h2 {
-    margin: 0 0 20px;
-    font-size: 20px;
-  }
-  
-  .sez_contacts ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sez_contacts li {
+    
+}
+
+.card_img{
     display: flex;
     align-items: center;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .sez_contacts li.active {
-    background-color: #F1F1F1;
-  }
-  
-  .sez_contacts li img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-  
-   .chat {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-  
-   .messages {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: scroll;
-  }
-  
-  .message {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .message p {
-    padding: 10px;
-    background-color: #FFF;
-    border-radius: 20px;
-    max-width: 70%;
-    word-wrap: break-word;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  }
-  
-  .received {
-    align-self: flex-start;
-  }
-  
-  .sent {
-    align-self: flex-end;
-    margin-left: 30%;
-  }
-  
-   .message-input {
+    gap: 10px;
+}
+
+
+.icons{
+
     display: flex;
     align-items: center;
-    padding: 10px;
-    background-color: #FFF;
-    box-shadow: 0 -2px 2px rgba(0,0,0,0.1);
-  }
-  
-  .message-input input {
+    gap: 20px;
+
+}
+
+
+
+
+
+/* *****************
+***BODYYYYY CHAT****
+****************** */
+
+
+.body_caht{
     flex-grow: 1;
-    border: none;
-    padding: 10px;
-    margin-right: 10px;
-  }
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: #eaeaea6f;
+    padding: 7px 12px;
+   
   
-  .message-input button {
-    padding: 10px;
-    background-color: #075E54;
-    color: #FFF;
-    border: none;
+}
+
+
+
+
+.header_body .user-input {
+    flex-grow: 1;
+    border-radius: 8px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+
+
+.avatar_user_contact{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+
+
+
+/* *************+seconda sidebar************** */
+
+
+
+.card.alert {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+.sidebar_alert {
+    background-color: #8edafc;
+    padding: 12px 20px;
+}
+
+.sidebar_alert .alert__icon {
+    color: #8edafc;
+    background-color: white;
+}
+
+
+.alert__icon {
+    border-radius: 999px;
+    width: 50px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.search-bar {
+    padding: 6px 8px;
+    background-color: #fafafa;
+}
+
+
+.input-group {
+    display: flex;
+    position: relative;
+}
+
+.input-group__btn {
+    position: absolute;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    font-size: 18px;
+    z-index: 10;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    color: #979797;
+    pointer-events: none;
+}
+
+
+.input-group input {
+    flex-grow: 1;
+    line-height: 36px;
+    padding: 0 12px 0 87px;
+}
+
+
+
+
+
+
+.toolbar {
+    background-color: #eaeaea;
+    padding: 6px 14px;
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    justify-content: space-between;
+ 
+}
+
+.user-input{
+    flex-grow: 1;
+    padding: 5px;
     border-radius: 5px;
-    cursor: pointer;
-  }
+}
+
+.icon-toolbar{
+    font-size: 20px;
+}
+
+.body_chat {
+    background-image: url('../img/mine.jpg');
+    padding: 50px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+
+
+.message.received {
+    background-color: white;
+    align-self: flex-start;
+    background-color: #d5f9ba;
+    padding: 20px;
+    max-width: 60%;
+    border-radius: 17px;
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.message.sent {
+    background-color: #d5f9ba;
+    padding: 17px;
+    border-radius: 17px;
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.message .time {
+    position: absolute;
+    bottom: 3px;
+    right: 14px;
+    color: #979797;
+    font-size: 13px;
+    font-weight: 800;
+}
   
-  .message-input button:hover {
-    background-color: #0E714B;
-  }
-  
+    .toolbar .card .contact__thumb {
+        height: 50px;
+    }
+
+    .side-contacts{
+        padding: 8px 6px 8px 1px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 24px;
+    }
+    
+    
+    .card .contact__thumb {
+        aspect-ratio: 1/1;
+        border-radius: 999px;
+        overflow: hidden;
+        height: 64px;
+        flex-shrink: 0;
+    }
+    
+    .card .contact__thumb img {
+        display: block;
+    }
+
+ 
+    .side-contacts:hover,
+    .side-contacts:active {
+        background-color: #e9ebeb;
+    }
+    
+
+    .card_user{
+        display: flex;
+        gap: 10px;
+    }

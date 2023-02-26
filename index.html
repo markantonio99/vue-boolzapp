@@ -1,86 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/app.css">
+    <script src="https://kit.fontawesome.com/154f1b3bac.js" crossorigin="anonymous"></script>
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
+
 <body>
-    
-    <div id="app">{{ message }}
 
-        <div class="container">
-            <div class="header">
-              <img src="./immagini/avatar.png" alt="avatar">
-              <h1>Boolzapp</h1>
-            </div>
-            <div class="chat-container">
-              <div class="sez_contacts">
-                <h2>Contatti</h2>
-                <ul>
-                  <li class="active"><img src="./immagini/avatar.png" alt="avatar">John Doe</li>
-                  <li><img src="./immagini/avatar.png" alt="Avatar">JMario bianchi</li>
-                  <li><img src="./immagini/avatar.png" alt="Avatar">Elisabetta napoli</li>
-                  <li><img src="./immagini/avatar.png" alt="Avatar">Miky V</li>
-                  <li><img src="./immagini/avatar.png" alt="Avatar">Davide onesti</li>
-                </ul>
-              </div>
-              <div class="chat">
-                <div class="messages">
-                  <div class="message received">
-                    <p>Hei ciao!</p>
-                  </div>
-                  <div class="message sent">
-                    <p>Ciao!</p>
-                  </div>
-                  <div class="message received">
-                    <p>Come va?</p>
-                  </div>
-                  <div class="message sent">
-                    <p>Abbastanza bene))</p>
-                  </div>
-                  <div class="message received">
-                    <p>Buono a sapersi!</p>
-                  </div>
-                  <div class="message sent">
-                    <p>Tu?</p>
-                  </div>
-                  <div class="message received">
-                    <p>Sto bene, grazie!</p>
-                  </div>
+
+    <div id="app">
+
+    <div class="container">
+             
+        <div class="sidebar">
+
+                       <div class="header_sidebar">
+                                <div class="card_img">
+                                     <figure class="img_user">
+                                        <img src="./immagini/avatar.png" alt="user avtar">
+                                     </figure>
+                                     <div class="user_name"> 
+                                        <p>Marco</p>
+                                     </div>
+                                </div>
+                                <ul class="icons">
+                                    <li>
+                                        <i class="fa-solid fa-circle-notch"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-message"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </li>
+                                </ul>
+                       </div>
+
+
+<!-- ***************************************************************************** -->
+
+
+                       <div class="sidebar_alert">
+                        <div class="card alert">
+                            <div class="alert__icon">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+                            <div class="card__body">
+                                <h3 class="alert__title">Ricevi notifiche di nuovi messaggi</h3>
+                                <p class="alert__info">Lorem ipsum dolor sit amet et?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <div class="input-group">
+                            <div class="input-group__btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" />
+                        </div>
+
+                        <ul class="contacts">
+                            <li v-for="(contact,index) in contacts" :class="index === activeChatIndex ? 'active' : ''" 
+                             @click="functionActiveIndex(index)"
+                              class="side-contacts">
+                               
+                                <div class="card contact card_user">
+                                    <figure class="contact__thumb">
+                                        <img :src="contact.avatar" alt="" />
+                                    </figure>
+                                    <div class="card__body">
+                                        <h3 class="contact__name">{{ contact.name }}</h3>
+                                        <p class="contact__info">
+                                            Lorem ipsum dolor sit amet consectetur.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- span con ora ultimo messaggio -->
+                                <span class="time"> 12:00 </span>
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                    
+                      
+
+        </div>
+        
+
+
+ <!--***************************BODY*******************************
+ ***************************************************************-->
+
+
+
+
+
+
+        <div class="body_caht">
+                 
+            <div class="header_body">
+                <div class="avatar_user_contact">
+                    <figure class="user_immg">
+                        <img :src="contacts[activeChatIndex].avatar"  alt="" />
+                    </figure>
+                   
+                        <h3>{{contacts[activeChatIndex].name}}</h3>
+                   
                 </div>
-                <form class="message-input">
-                  <input type="text" placeholder="Scrivi un messaggio qui...">
-                  <button type="submit">Invia</button>
-                </form>
-              </div>
+
+                <ul class="menu icons">
+                    <li>
+                        <i class="fa-solid fa-circle-notch"></i>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-message"></i>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </li>
+                </ul>
             </div>
-          </div>
-          
-              
-              </div>
-              <div class="chat-footer">
-                <!-- campo di input della chat -->
-              </div>
+            <ul class="body_chat">
+                <li v-for="chat in contacts[activeChatIndex].messages" :class="chat.status=== 'sent' ? 'sent' :  'received'"   class="message ">
+                   {{ chat.message}}
+                    <span class="time"> 15:30 </span>
+                </li>
+<!-- 
+                <li class="message received">
+                    Arriva subito, è in ascensore.
+                    <span class="time"> 15:41 </span>
+                </li>
+
+                <li class="message sent">
+                    Perfetto grazie!
+                    <span class="time"> 15:41 </span>
+                </li>
+
+                <li class="message received">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Asperiores mollitia at rem harum quod. Nesciunt, est fuga. Dolorum
+                    repellendus cupiditate nulla accusamus! Beatae, explicabo deleniti
+                    eaque nobis ex natus, ab a quam, quo sint totam nostrum facilis
+                    quidem obcaecati cumque! Perspiciatis quod totam quae quam vel
+                    ullam quasi delectus perferendis.
+                    <span class="time"> 15:41 </span>
+                </li> -->
+            </ul>
+            <div class="toolbar">
+                <div class="icon-toolbar">
+                    <i class="fa-regular fa-face-smile"></i>
+                </div>
+                <input class="user-input" type="text" placeholder="Scrivi messaggio" />
+                <div class="icon-toolbar">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
             </div>
-          </div>
-          
-          
 
-
-
-
-
-
-
+            
+        </div>
     </div>
+
+
+</div>
+
+
+
+ 
 
 
 
     <script src="./js/app.js"></script>
 </body>
+
 </html>
